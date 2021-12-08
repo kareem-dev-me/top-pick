@@ -1,12 +1,11 @@
 <template>
   <v-img
-    :src="
-      require('~/assets/young-attractive-maid-uniform-showing-ok-gesture-while-standing.jpeg')
-    "
+    :src="require('~/assets/hero.jpeg')"
     max-height="100vh"
     class="align-center"
     gradient="to right, #D7AF4D 30%, transparent 50%"
-    position="right top"
+    position="top"
+    eager
   >
     <v-row class="text-center">
       <v-col cols="12" md="4">
@@ -16,8 +15,18 @@
           max-width="200"
           max-height="100"
         ></v-img>
-        <p class="secondary--text text-h5">مكتب اختيار القمة للخادمات</p>
-        <v-btn outlined color="secondary">اتصل بنا</v-btn>
+
+        <p class="secondary--text text-h5 font-weight-bold">
+          مكتب اختيار القمة للخادمات
+        </p>
+
+        <v-btn
+          outlined
+          color="secondary"
+          class="rounded-lg font-weight-bold"
+          @click="$vuetify.goTo('#contact')"
+          >اتصل بنا</v-btn
+        >
       </v-col>
     </v-row>
   </v-img>
