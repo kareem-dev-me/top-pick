@@ -9,10 +9,10 @@
     </v-col>
 
     <v-col cols="12" md="6" order="1" order-md="2">
-      <v-tooltip v-for="number in 5" :key="number" bottom>
+      <v-tooltip v-for="(number, index) in numbers" :key="index" bottom>
         <template #activator="{ on, attrs }">
           <v-btn
-            href="https://api.whatsapp.com/send?phone=0580393123"
+            :href="`https://api.whatsapp.com/send?phone=${number}`"
             target="_blank"
             class="my-3 rounded-lg"
             x-large
@@ -22,7 +22,7 @@
             v-bind="attrs"
             v-on="on"
           >
-            Button
+            {{ number }}
           </v-btn>
         </template>
         <span>للتواصل عن طريق الواتس</span>
@@ -32,7 +32,13 @@
 </template>
 
 <script>
-export default {}
+export default {
+  data() {
+    return {
+      numbers: ['0580381135', '0580393834', '0580393123', '0580381152'],
+    }
+  },
+}
 </script>
 
 <style></style>
