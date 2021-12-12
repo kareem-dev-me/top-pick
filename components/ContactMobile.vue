@@ -1,10 +1,10 @@
 <template>
   <v-row>
     <v-col cols="12" md="6" order="2" order-md="1">
-      <v-tooltip v-for="(number, index) in numbers" :key="index" bottom>
+      <v-tooltip v-for="number in numbers" :key="number.id" bottom>
         <template #activator="{ on, attrs }">
           <v-btn
-            :href="`tel:${number}`"
+            :href="`tel:${number.num}`"
             target="_blank"
             class="my-3 rounded-lg"
             x-large
@@ -14,7 +14,7 @@
             v-bind="attrs"
             v-on="on"
           >
-            {{ number }}
+            {{ number.num }}
           </v-btn>
         </template>
         <span>للتواصل عن طريق الجوال</span>
@@ -35,8 +35,21 @@
 export default {
   data() {
     return {
-      numbers: ['0580381152', '0580393834', '0580381135', '0580393123'],
+      numbers: [],
     }
+  },
+  mounted() {
+    const requestOptions = {
+      method: 'GET',
+      redirect: 'follow',
+    }
+
+    fetch(
+      'http://alqimaforservices.com/pagepanel/api/v1/numbers?type=contact',
+      requestOptions
+    )
+      .then((response) => response.json())
+      .then((result) => (this.numbers = result.data))
   },
 }
 </script>
