@@ -45,7 +45,7 @@ export default {
     }
 
     fetch(
-      'http://alqimaforservices.com/pagepanel/api/v1/numbers?type=contact',
+      'https://alqimaforservices.com/pagepanel/api/v1/numbers?type=contact',
       requestOptions
     )
       .then((response) => response.json())
